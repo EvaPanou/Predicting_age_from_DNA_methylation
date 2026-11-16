@@ -1,0 +1,10 @@
+# Downloaded data and files made by the notebook (not committed)
+data/
+metadata/
+results/
+
+# Python and Visual Studio Code
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pt
