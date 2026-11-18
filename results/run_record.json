@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-18T02:02:01",
+  "study": "GSE179325",
+  "platform": "GPL21145",
+  "cell_type": "Whole blood",
+  "samples_used": 101,
+  "sites_in_the_file": 768067,
+  "sites_selected": 2000,
+  "seeds": [
+    0,
+    1,
+    42
+  ],
+  "settings": {
+    "minimum_samples": 100,
+    "maximum_samples": 600,
+    "maximum_file_megabytes": 500,
+    "maximum_sites_to_keep": null
+  },
+  "data_checks": {
+    "usable_samples": 101,
+    "sample_names_unique": true,
+    "values_below_zero": 0,
+    "values_above_one": 0,
+    "fraction_missing": 0.0,
+    "samples_with_every_value_missing": 0,
+    "copied_samples_in_first_20000_sites": 0,
+    "people": 101,
+    "most_samples_of_one_person": 1
+  },
+  "versions": {
+    "torch": "2.15.0",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "pyarrow": "26.0.1",
+    "huggingface_hub": "2.4.0",
+    "ipykernel": "7.4.0"
+  },
+  "python": "3.14.7"
+}

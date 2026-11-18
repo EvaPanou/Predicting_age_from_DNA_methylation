@@ -1,0 +1,139 @@
+{
+  "results_by_seed": {
+    "0": {
+      "baseline: mean age": {
+        "median_absolute_error_years": 15.5,
+        "mean_absolute_error_years": 14.89464282989502,
+        "correlation": null
+      },
+      "baseline: median age": {
+        "median_absolute_error_years": 13.5,
+        "mean_absolute_error_years": 14.875,
+        "correlation": null
+      },
+      "elastic net": {
+        "median_absolute_error_years": 4.880590438842773,
+        "mean_absolute_error_years": 5.629065036773682,
+        "correlation": 0.9271812125600465
+      },
+      "multilayer perceptron": {
+        "median_absolute_error_years": 3.685190200805664,
+        "mean_absolute_error_years": 4.242710590362549,
+        "correlation": 0.9522980087461901
+      }
+    },
+    "1": {
+      "baseline: mean age": {
+        "median_absolute_error_years": 17.885711669921875,
+        "mean_absolute_error_years": 18.47142791748047,
+        "correlation": null
+      },
+      "baseline: median age": {
+        "median_absolute_error_years": 16.0,
+        "mean_absolute_error_years": 18.125,
+        "correlation": null
+      },
+      "elastic net": {
+        "median_absolute_error_years": 3.917865753173828,
+        "mean_absolute_error_years": 6.467052459716797,
+        "correlation": 0.9200432823830721
+      },
+      "multilayer perceptron": {
+        "median_absolute_error_years": 7.244184494018555,
+        "mean_absolute_error_years": 8.8982515335083,
+        "correlation": 0.9222120777611317
+      }
+    },
+    "42": {
+      "baseline: mean age": {
+        "median_absolute_error_years": 13.0,
+        "mean_absolute_error_years": 14.796428680419922,
+        "correlation": null
+      },
+      "baseline: median age": {
+        "median_absolute_error_years": 10.5,
+        "mean_absolute_error_years": 12.875,
+        "correlation": null
+      },
+      "elastic net": {
+        "median_absolute_error_years": 6.025188446044922,
+        "mean_absolute_error_years": 6.673471450805664,
+        "correlation": 0.8163365109056613
+      },
+      "multilayer perceptron": {
+        "median_absolute_error_years": 4.965278625488281,
+        "mean_absolute_error_years": 5.795066833496094,
+        "correlation": 0.8903833427374034
+      }
+    }
+  },
+  "summary_across_seeds": {
+    "baseline: mean age": {
+      "median_absolute_error_years": {
+        "mean": 15.461903889973959,
+        "standard_deviation": 2.443078614290182
+      },
+      "mean_absolute_error_years": {
+        "mean": 16.054166475931805,
+        "standard_deviation": 2.0939857120782195
+      },
+      "correlation": {
+        "mean": null,
+        "standard_deviation": null
+      }
+    },
+    "baseline: median age": {
+      "median_absolute_error_years": {
+        "mean": 13.333333333333334,
+        "standard_deviation": 2.753785273643051
+      },
+      "mean_absolute_error_years": {
+        "mean": 15.291666666666666,
+        "standard_deviation": 2.6496855159307744
+      },
+      "correlation": {
+        "mean": null,
+        "standard_deviation": null
+      }
+    },
+    "elastic net": {
+      "median_absolute_error_years": {
+        "mean": 4.941214879353841,
+        "standard_deviation": 1.0549685896095815
+      },
+      "mean_absolute_error_years": {
+        "mean": 6.256529649098714,
+        "standard_deviation": 0.5531148883918141
+      },
+      "correlation": {
+        "mean": 0.8878536686162599,
+        "standard_deviation": 0.06203841871820092
+      }
+    },
+    "multilayer perceptron": {
+      "median_absolute_error_years": {
+        "mean": 5.2982177734375,
+        "standard_deviation": 1.8027053147861811
+      },
+      "mean_absolute_error_years": {
+        "mean": 6.3120096524556475,
+        "standard_deviation": 2.370429871749425
+      },
+      "correlation": {
+        "mean": 0.921631143081575,
+        "standard_deviation": 0.030961420842256827
+      }
+    }
+  },
+  "bootstrap_intervals_seed_0": {
+    "elastic net": [
+      2.7848129272460938,
+      7.734306335449219
+    ],
+    "multilayer perceptron": [
+      0.9111404418945312,
+      7.993656158447266
+    ]
+  },
+  "result_sentence": "In study GSE179325 (101 healthy blood samples, platform GPL21145, cell type Whole blood), an elastic net restricted to the 2000 sites most correlated with age (selected on training samples only) reached a median absolute error of 4.94 years (standard deviation 1.05 over 3 seeds; 95 percent bootstrap interval 2.78 to 7.73 years on the test samples of seed 0), compared with 15.46 years for the baseline that always predicts the mean training age and 13.33 years for the baseline that always predicts the median training age. A small multilayer perceptron reached 5.30 years (standard deviation 1.80). These results come from a single study and may not transfer to other studies."
+}
