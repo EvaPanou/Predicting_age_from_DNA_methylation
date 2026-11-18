@@ -5,7 +5,6 @@
 This project predicts a person's age in years from the methylation of their blood deoxyribonucleic acid, using one healthy whole-blood study from the ComputAge Bench dataset<sup>1</sup>, and compares an elastic net with a small multilayer perceptron written in PyTorch.
 
 ## Repository structure and data sources
-
 | Path | What it is | Source and how it was obtained |
 |---|---|---|
 | `README.md` | Description, setup, notes, results and references | |
@@ -18,7 +17,6 @@ This project predicts a person's age in years from the methylation of their bloo
 | `results/` | Figures, a results table and two files of numbers made by the notebook | Created by the notebook |
 
 ## Setup
-
 1. Create a virtual environment in the project folder:
 
    ```text
@@ -98,9 +96,7 @@ All figures are made by the notebook and saved in `results/`.
 
 ![Predicted against real age](results/predicted_against_real.png)
 
-### Conclusions
 ### Environment used
-
 | Item | Version or detail |
 |---|---|
 | Operating system | Windows 11, version 10.0.26300 |
@@ -110,7 +106,6 @@ All figures are made by the notebook and saved in `results/`.
 | Date of setup | `15/11/2026` |
 
 ### Package versions
-
 The exact versions are pinned in `requirements.txt` and were printed by Step 1 of the notebook.
 
 | Package | Version |
