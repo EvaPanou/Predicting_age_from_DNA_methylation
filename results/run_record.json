@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-18T02:02:01",
+  "date": "2026-11-18T04:03:50",
   "study": "GSE179325",
   "platform": "GPL21145",
   "cell_type": "Whole blood",
@@ -25,7 +25,7 @@
     "fraction_missing": 0.0,
     "samples_with_every_value_missing": 0,
     "copied_samples_in_first_20000_sites": 0,
-    "people": 101,
+    "donors": 101,
     "most_samples_of_one_person": 1
   },
   "versions": {
