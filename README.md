@@ -13,8 +13,8 @@ This project predicts a person's age in years from the methylation of their bloo
 | `LICENSE` | Licence of the code | |
 | `ComputAge_Bench_analysis.ipynb` | The analysis notebook, saved with its outputs | |
 | `metadata/computage_train_meta.tsv` | Table of the training samples: study, platform, tissue, cell type, gender, age, condition| Downloaded automatically by the notebook from the ComputAge Bench dataset on Hugging Face<sup>7</sup>|
-| `data/train/computage_train_data_GSE179325.parquet` | Beta values of the chosen study, 314.5 megabytes (not committed - located in .gitignore) | Downloaded automatically by the notebook from the same dataset<sup>7</sup> |
-| `results/` | Figures, a results table and two files of numbers made by the notebook | Created by the notebook |
+| `data/` | Files containing beta values and names of all sites of the chosen study, 314.5 megabytes (not committed - located in .gitignore) | Downloaded automatically by the notebook from the same dataset<sup>7</sup> |
+| `results/` | Figures, a results table, two files of numbers, the sites chosen by the elastic net for each seed (`elastic_net_sites_seed_0.csv`, `elastic_net_sites_seed_1.csv`, `elastic_net_sites_seed_42.csv`) and `bridge_information.json` (study, platform, seeds, number of sites, date) | Created by the notebook |
 
 ## Setup
 1. Create a virtual environment in the project folder:
@@ -42,7 +42,7 @@ This project predicts a person's age in years from the methylation of their bloo
 4. Open the notebook and select the `.venv` environment as its kernel:
    - **Visual Studio Code *(used for this project)*:** click *Select Kernel*, and choose `.venv`.
 
-5. Run `ComputAge_Bench_analysis.ipynb` from top to bottom. Step 2 downloads the metadata table and one study file (314.5 megabytes) into the folders `metadata` and `data`. The table in memory takes about 0.3 gigabytes. No graphics card is needed; the run documented here used the processor only.
+5. Run `ComputAge_Bench_analysis.ipynb` from top to bottom. Step 2 downloads the metadata table and one study file (314.5 megabytes) into the folders `metadata` and `data`. The table in memory takes about 0.3 gigabytes. No graphics card is needed; the run documented here used the processor only. Step 10.4 repeats the fit of the elastic net for each seed once more to save the chosen sites, which takes about as long as the elastic net part of Step 10.1.
 
 ## Intro
 Methylation is a chemical mark that can sit on deoxyribonucleic acid at places called methylation sites (cytosine-phosphate-guanine sites, written CpG sites). A microarray measures, for every site, a beta value: the fraction of molecules in the sample that carry the mark, from 0 (none) to 1 (all)<sup>1,2</sup>. At some sites this fraction changes with age, so the beta values of many sites together can be used to predict age.
@@ -72,6 +72,10 @@ Median absolute error on the test donors, seed by seed:
 | 42 | 13.00 | 10.50 | 6.03 | 4.97 |
 
 For seed 0, the 95 percent bootstrap interval of the median absolute error is 2.78 to 7.73 years for the elastic net and 0.91 to 7.99 years for the multilayer perceptron. The elastic net kept 126 of the 2,000 sites with a weight different from zero, and the network's best epoch was 84 of 150.
+
+Step 10.4 saves the 2,000 sites offered to the elastic net for each seed, with their weights, in `results/`. The elastic net kept 126 sites with a weight different from zero for seed 0, 755 for seed 1 and 186 for seed 42. For seed 1, the fit printed a convergence warning (the optimisation stopped before reaching its tolerance), so the site list of that seed is less reliable. The weights are in years per standard deviation of the site value, because the features were standardised.
+
+
 
 - **Against the baselines.** In this study, both models had a much lower test error than both baselines in every seed. The mean median absolute error was 4.94 years for the elastic net and 5.30 years for the network, against 15.46 and 13.33 years for the two baselines.
 - **Between the models.** The study cannot separate them. The network had the lower error for seeds 0 and 42, the elastic net for seed 1, and the difference between the models is smaller than the spread between seeds. The bootstrap intervals for seed 0 overlap strongly.
@@ -118,6 +122,9 @@ The exact versions are pinned in `requirements.txt` and were printed by Step 1 o
 | pyarrow | 26.0.1 |
 | huggingface_hub | 2.4.0 |
 | ipykernel | 7.4.0 |
+
+## Link to the RAG_using_GeneOntology project
+The sites saved by Step 10.4 are the input of a separate project that looks up the genes behind them and tests which Gene Ontology terms they relate to: [RAG_using_GeneOntology](https://github.com/EvaPanou/RAG_using_GeneOntology). The two projects are independent: this notebook does not need the other one to run.
 
 ## References
 1. Kriukov D, Efimov E, Kuzmina EA, Khrameeva EE, Dylov DV. ComputAgeBench: epigenetic aging clocks benchmark. *bioRxiv*. Preprint published online 2024. doi:10.1101/2024.06.06.597715
