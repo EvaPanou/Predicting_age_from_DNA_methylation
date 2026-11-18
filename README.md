@@ -49,10 +49,10 @@ Methylation is a chemical mark that can sit on deoxyribonucleic acid at places c
 
 The elastic net is a linear model that adds two penalties to keep the weights small, so that many weights become exactly zero. It is designed for the case where there are many more predictors than samples<sup>3</sup>, which is the case here. It is fitted with ElasticNetCV from scikit-learn<sup>4</sup>. The multilayer perceptron is a small neural network of three fully connected layers, built with PyTorch<sup>5</sup> and trained with the AdamW optimiser<sup>6</sup>.
 
-The main measure is the median absolute error in years on test people who were never used for any choice. Every model is shown next to two baselines that ignore the methylation values: always guessing the mean training age, and always guessing the median training age. Everything is repeated with seeds 0, 1 and 42.
+The main measure is the median absolute error in years on test donors who were never used for any choice. Every model is shown next to two baselines that ignore the methylation values: always guessing the mean training age, and always guessing the median training age. Everything is repeated with seeds 0, 1 and 42.
 
 ## Results and conclusions
-All numbers come from the test people of the saved notebook. The mean and standard deviation are over seeds 0, 1 and 42. Each seed has its own split: 70 training people for seed 0, and 16 test people for every seed.
+All numbers come from the test donors of the saved notebook. The mean and standard deviation are over seeds 0, 1 and 42. Each seed has its own split: 70 training donors for seed 0, and 16 test donors for every seed.
 
 | Model | Median absolute error in years | Mean absolute error in years | Correlation |
 |---|---|---|---|
@@ -63,7 +63,7 @@ All numbers come from the test people of the saved notebook. The mean and standa
 
 A correlation is not defined for a baseline, because it predicts one number for everybody. The standard deviation shows only the effect of different random splits and starts, not the small size of the test set.
 
-Median absolute error on the test people, seed by seed:
+Median absolute error on the test donors, seed by seed:
 
 | Seed | Baseline: mean age | Baseline: median age | Elastic net | Multilayer perceptron |
 |---|---|---|---|---|
@@ -75,7 +75,7 @@ For seed 0, the 95 percent bootstrap interval of the median absolute error is 2.
 
 - **Against the baselines.** In this study, both models had a much lower test error than both baselines in every seed. The mean median absolute error was 4.94 years for the elastic net and 5.30 years for the network, against 15.46 and 13.33 years for the two baselines.
 - **Between the models.** The study cannot separate them. The network had the lower error for seeds 0 and 42, the elastic net for seed 1, and the difference between the models is smaller than the spread between seeds. The bootstrap intervals for seed 0 overlap strongly.
-- **Leakage.** Choosing the sites with all people, test people included, gave an elastic net test error of 3.84 years for seed 0, against 4.88 years for the correct pipeline. The leaky pipeline looked about one year better, which shows why the choice of sites must use training people only.
+- **Leakage.** Choosing the sites with all donors, test donors included, gave an elastic net test error of 3.84 years for seed 0, against 4.88 years for the correct pipeline. The leaky pipeline looked about one year better, which shows why the choice of sites must use training donors only.
 
 ### Figures
 All figures are made by the notebook and saved in `results/`.
@@ -84,15 +84,15 @@ All figures are made by the notebook and saved in `results/`.
 
 ![Overview of the beta values](results/data_overview.png)
 
-**First look at the training people** (`first_look.png`): the ages of the training people, and the beta value against age for the four sites most correlated with age.
+**First look at the training donors** (`first_look.png`): the ages of the training donors, and the beta value against age for the four sites most correlated with age.
 
-![First look at the training people](results/first_look.png)
+![First look at the training donors](results/first_look.png)
 
-**Learning curve of the network, seed 0** (`network_learning_curve.png`): the median absolute error on the validation people after every epoch. The dashed line marks the epoch that was kept.
+**Learning curve of the network, seed 0** (`network_learning_curve.png`): the median absolute error on the validation donors after every epoch. The dashed line marks the epoch that was kept.
 
 ![Learning curve of the network](results/network_learning_curve.png)
 
-**Predicted against real age on the test people, seed 0** (`predicted_against_real.png`): the top row shows predicted against real age for the elastic net and the network, the bottom row the predicted age minus the real age. The dashed line in the top row is where a perfect prediction would lie.
+**Predicted against real age on the test donors, seed 0** (`predicted_against_real.png`): the top row shows predicted against real age for the elastic net and the network, the bottom row the predicted age minus the real age. The dashed line in the top row is where a perfect prediction would lie.
 
 ![Predicted against real age](results/predicted_against_real.png)
 
